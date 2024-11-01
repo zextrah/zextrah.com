@@ -35,25 +35,6 @@ h1 {
     font-size: 2.5rem;
 }
 
-.user-details {
-    text-align: center;          /* Center text within the user-details section */
-    margin: 30px auto;          /* Center the section itself with margin */
-    max-width: 700px;           /* Optional: limit the width of the section */
-}
-
-.user-details img {
-    width: 250px;               /* Set a fixed width for the image */
-    height: auto;               /* Maintain aspect ratio */
-    border-radius: 50%;         /* Keep the circular shape */
-    margin-bottom: 10px;        /* Space below the image */
-}
-
-.user-details h2 {
-    font-size: 5rem;            /* Set a font size for the title */
-    color: #fff;                /* Optional: Set title color to match your theme */
-    margin-bottom: 10px;        /* Space below the title */
-}
-
 figure {
     margin: 1em 40px;
 }
@@ -418,24 +399,27 @@ a img {
 
 .header-icons {
     display: flex;
-    justify-content: center; /* Center the icons horizontally */
+    justify-content: center; /* Keep the icons centered */
     align-items: center; /* Center the icons vertically */
-    margin-top: 10px; /* Space above the icons, adjust as needed */
+    margin-top: 250px; /* Space above the icons, adjust as needed */
     width: 100%; /* Full width for centering */
     position: relative; /* Change to relative for proper stacking */
+    padding-left: 610px; /* Increase this value to shift the icons more to the right */
 }
 
 .header-icons img {
-    width: 40px; /* Set a fixed width for the icon */
+    width: 50px; /* Set a fixed width for the icon */
     height: auto; /* Maintain aspect ratio */
-    margin: 0 10px; /* Space between icons */
-    transition: transform 0.3s; /* Smooth transition for hover effect */
+    margin: 0 13px; /* Space between icons */
+    transition: transform 0.3s, filter 0.3s; /* Smooth transition for hover effect */
+    border-radius: 10%; /* Adjusted for less roundness */
+    filter: brightness(0.7); /* Darker icon by default */
 }
 
 .header-icons img:hover {
-    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+    transform: scale(1.2) rotate(15deg); /* Slightly enlarge and rotate the icon on hover */
+    filter: brightness(1.2); /* Brighten the icon on hover */
 }
-
 @media only screen and (min-width: 550px) {
     .header .site-description {
         font-size: 40px;
