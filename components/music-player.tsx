@@ -29,7 +29,7 @@ export function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
 
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.volume = 0.3
+      audioRef.current.volume = 0.1
     }
 
     if (autoPlay && audioRef.current) {
