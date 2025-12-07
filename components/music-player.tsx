@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { Pause, Play } from "lucide-react"
+import { Pause, Play } from 'lucide-react'
 
 // 🎯 CUSTOMIZE: Add your music files here
 // Place your music files in the /public/music folder
@@ -33,11 +33,18 @@ export function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
     }
 
     if (autoPlay && audioRef.current) {
-      // Attempt to play when the intro finishes
-      audioRef.current.play().catch(() => {
-        // Browser blocked autoplay, user will need to click play
-        setIsPlaying(false)
-      })
+      const playPromise = audioRef.current.play()
+
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true)
+          })
+          .catch(() => {
+            // Browser blocked autoplay, user will need to click play
+            setIsPlaying(false)
+          })
+      }
     }
   }, [autoPlay])
 
