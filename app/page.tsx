@@ -12,13 +12,22 @@ export default function Home() {
   const [showIntro, setShowIntro] = useState(true)
   const [fadeOut, setFadeOut] = useState(false)
   const [introText, setIntroText] = useState("")
-  const [showClickPrompt, setShowClickPrompt] = useState(false)
+  const [typingComplete, setTypingComplete] = useState(false)
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0)
   const [text, setText] = useState("")
   const [showCursor, setShowCursor] = useState(true)
   const [isDeleting, setIsDeleting] = useState(false)
 
   const introFullText = "zextrah"
+
+  const handleIntroClick = () => {
+    if (typingComplete) {
+      setFadeOut(true)
+      setTimeout(() => {
+        setShowIntro(false)
+      }, 1000)
+    }
+  }
 
   useEffect(() => {
     if (!showIntro) return
@@ -30,22 +39,12 @@ export default function Home() {
         currentIndex++
       } else {
         clearInterval(typingInterval)
-        setTimeout(() => {
-          setShowClickPrompt(true)
-        }, 500)
+        setTypingComplete(true)
       }
     }, 150)
 
     return () => clearInterval(typingInterval)
   }, [showIntro])
-
-  const handleIntroClick = () => {
-    if (!showClickPrompt) return
-    setFadeOut(true)
-    setTimeout(() => {
-      setShowIntro(false)
-    }, 1000)
-  }
 
   useEffect(() => {
     if (showIntro) return
@@ -83,12 +82,12 @@ export default function Home() {
 
   return (
     <>
-      {/* Intro Screen - Just "zextrah" with glow and click prompt */}
+      {/* Intro Screen - Just "zextrah" with glow */}
       <main
         onClick={handleIntroClick}
         className={`min-h-screen flex items-center justify-center bg-black text-white fixed inset-0 transition-opacity duration-1000 ${
           fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
-        } ${showClickPrompt ? "cursor-pointer" : ""}`}
+        } ${typingComplete ? "cursor-pointer" : ""}`}
         style={{ zIndex: fadeOut ? 10 : 20 }}
       >
         <div className="text-center flex flex-col items-center gap-6">
@@ -105,13 +104,8 @@ export default function Home() {
               style={{ transition: "opacity 0.1s" }}
             />
           </h1>
-          {showClickPrompt && (
-            <p
-              className="text-sm md:text-base text-white/60 animate-pulse"
-              style={{ animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite" }}
-            >
-              click to enter...
-            </p>
+          {typingComplete && (
+            <p className="text-sm md:text-base text-white/50 font-light animate-pulse">click to enter...</p>
           )}
         </div>
       </main>
@@ -124,7 +118,7 @@ export default function Home() {
         style={{ zIndex: 10 }}
       >
         <div className="absolute inset-0 z-0">
-          <Image src="/background.gif" alt="Background" fill className="object-cover opacity-40" priority unoptimized />
+          <Image src="/background.gif" alt="Background" fill className="object-cover opacity-25" priority unoptimized />
         </div>
 
         <div className="relative z-10 flex flex-col items-center gap-4 md:gap-12 px-4 py-8">
