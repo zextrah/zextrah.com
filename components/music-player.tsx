@@ -7,14 +7,7 @@ import { Pause, Play } from 'lucide-react'
 // Place your music files in the /public/music folder
 // Example: /public/music/song1.mp3, /public/music/song2.mp3
 const MUSIC_TRACKS = [
-  { title: "#doyalike - mikeeysmind", file: "/music/track1.mp3" },
-  { title: "Dome - Juice WRLD", file: "/music/track2.mp3" },
-  { title: "wutiwant - saraunh0ly", file: "/music/track3.mp3" },
-  { title: "scars - Novulent", file: "/music/track4.mp3" },
-  { title: "savior - Novulent", file: "/music/track5.mp3" },
-  { title: "Entry One - Jaydes Archive", file: "/music/track6.mp3" },
-  { title: "Entry Four - Jaydes Archive", file: "/music/track7.mp3" },
-  { title: "ecstacy - SUICIDAL-IDOL", file: "/music/track8.mp3" },
+  { title: "Entry Four - Jaydes Archive", file: "/music/track1.mp3" },
   // Add more tracks here
 ]
 
